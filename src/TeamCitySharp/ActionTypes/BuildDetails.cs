@@ -21,5 +21,12 @@ namespace TeamCitySharp.ActionTypes
 
             return buildWrapper.Build == null ? null : buildWrapper.Build.FirstOrDefault();
         }
+
+        public Build ByBuildId(string buildId)
+        {
+            var build = _caller.GetFormat<Build>("/app/rest/builds/{0}", buildId);
+
+            return build;
+        }
     }
 }
